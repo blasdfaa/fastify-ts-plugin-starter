@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "fastify start index.js -L -l -P -w"
+  },
+  "dependencies": {
+    "fastify": "latest",
+    "pkg-placeholder": "latest"
+  }
+}

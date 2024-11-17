@@ -1,0 +1,64 @@
+{
+  "name": "pkg-placeholder",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.13.1",
+  "description": "_description_",
+  "author": "Viktor Zdorovtsev",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/blasdfaa",
+  "homepage": "https://github.com/blasdfaa/fastify-ts-plugin-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blasdfaa/fastify-ts-plugin-starter.git"
+  },
+  "bugs": "https://github.com/blasdfaa/fastify-ts-plugin-starter/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
+    "dev": "vitest dev",
+    "lint": "eslint .",
+    "prepare": "lefthook install",
+    "prepack": "pnpm build",
+    "prepublishOnly": "pnpm lint && pnpm test",
+    "release": "pnpm test && bumpp && npm publish",
+    "test": "pnpm test:unit && pnpm test:types && pnpm test:package",
+    "test:unit": "vitest --run",
+    "test:types": "tsc --noEmit",
+    "test:package": "publint"
+  },
+  "dependencies": {
+    "fastify-plugin": "5.0.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.9.1",
+    "@types/node": "^20.17.6",
+    "bumpp": "^9.8.1",
+    "eslint": "^9.14.0",
+    "fastify": "5.1.0",
+    "lefthook": "1.8.2",
+    "publint": "^0.2.12",
+    "tsup": "^8.3.5",
+    "typescript": "5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "resolutions": {
+    "pkg-placeholder": "link:."
+  }
+}
